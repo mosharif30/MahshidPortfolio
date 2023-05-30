@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import Tweet from './tweet';
+// import { useMDXComponent } from 'next-contentlayer/hooks';
+// import Tweet from './tweet';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -102,16 +102,16 @@ interface MdxProps {
   tweets: Record<string, any>;
 }
 
-export function Mdx({ code, tweets }: MdxProps) {
-  const Component = useMDXComponent(code);
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
-  };
+// export function Mdx({ code, tweets }: MdxProps) {
+//   const Component = useMDXComponent(code);
+//   const StaticTweet = ({ id }) => {
+//     const tweet = tweets.find((tweet) => tweet.id === id);
+//     return <Tweet {...tweet} />;
+//   };
 
-  return (
-    <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-      <Component components={{ ...components, StaticTweet }} />
-    </article>
-  );
-}
+//   return (
+//     <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+//       <Component components={{ ...components, StaticTweet }} />
+//     </article>
+//   );
+// }

@@ -8,11 +8,11 @@ import { LayoutGroup, motion } from "framer-motion";
 const navItems = {
   "/": {
     name: "home",
-    subs: {},
+    subs: [],
   },
   "/about": {
     name: "about",
-    subs: {},
+    subs: [],
   },
   "/Illustration": {
     name: "Illustration",
@@ -23,7 +23,7 @@ const navItems = {
   },
   "/GraphicDesign": {
     name: "Graphic Design",
-    subs: {},
+    subs: [],
   },
 };
 
