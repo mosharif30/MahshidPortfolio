@@ -68,17 +68,16 @@ export default function Navbar() {
         </div>
         <LayoutGroup>
           <nav
-            className="flex flex-row md:flex-col items-start relative px-4 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+            className="flex flex-row md:flex-col items-start relative pl-3 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
             id="nav"
           >
-            <div className="flex flex-row md:flex-col space-x-0 pr-10 mb-2 mt-2 md:mt-0">
+            <div className="flex flex-row md:flex-col space-x-0 md:pr-10 mb-2 mt-2 md:mt-0">
               {Object.entries(navItems).map(([path, { name, subs }]) => {
                 const isActive = path === pathname;
                 if (subs.length) {
                   return (
-                    <>
+                    <div key={path}>
                       <Link
-                        key={path}
                         href={path}
                         className={clsx(
                           "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle ",
@@ -103,42 +102,43 @@ export default function Navbar() {
                           ) : null}
                         </span>
                       </Link>
-
-                      <>
-                        {subs.map((item) => {
-                          return (
-                            <>
-                              <Link
-                                key={item.url}
-                                href={item.url}
-                                className={clsx(
-                                  "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle",
-                                  {
-                                    "text-neutral-500": !isActive,
-                                    "font-bold": isActive,
-                                  }
-                                )}
-                              >
-                                <span className="relative py-[5px] px-[10px] ml-5">
-                                  {item.name}
-                                  {item.url === pathname ? (
-                                    <motion.div
-                                      className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md z-[-1]"
-                                      layoutId="sidebar"
-                                      transition={{
-                                        type: "spring",
-                                        stiffness: 350,
-                                        damping: 30,
-                                      }}
-                                    />
-                                  ) : null}
-                                </span>
-                              </Link>
-                            </>
-                          );
-                        })}
-                      </>
-                    </>
+                      {pathname.includes(path) && (
+                        <>
+                          {subs.map((item) => {
+                            return (
+                              <>
+                                <Link
+                                  key={item.url}
+                                  href={item.url}
+                                  className={clsx(
+                                    "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle",
+                                    {
+                                      "text-neutral-500": !isActive,
+                                      "font-bold": isActive,
+                                    }
+                                  )}
+                                >
+                                  <span className="relative py-[5px] px-[10px] ml-5">
+                                    {item.name}
+                                    {item.url === pathname ? (
+                                      <motion.div
+                                        className="absolute inset-0 bg-neutral-100 dark:bg-neutral-800 rounded-md z-[-1] "
+                                        layoutId="sidebar"
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 350,
+                                          damping: 30,
+                                        }}
+                                      />
+                                    ) : null}
+                                  </span>
+                                </Link>
+                              </>
+                            );
+                          })}
+                        </>
+                      )}
+                    </div>
                   );
                 } else {
                   return (
