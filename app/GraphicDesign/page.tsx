@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function GraphicDesignPage() {
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif">Graphic Design Page</h1>
+      <h1 className="font-bold text-3xl ">Graphic Design Page</h1>
     </section>
   );
 }

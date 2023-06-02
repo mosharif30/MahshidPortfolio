@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function IllustrationPage() {
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif">Illustration Page</h1>
+      <h1 className="font-bold text-3xl ">Illustration Page</h1>
     </section>
   );
 }
