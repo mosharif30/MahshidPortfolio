@@ -1,20 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './content/**/*.mdx',
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./content/**/*.mdx",
   ],
   theme: {
     extend: {
+      colors: { customBlue: "#1a56f4", customGray: "#949599" },
+      width: {
+        half: "50vw",
+      },
       fontFamily: {
-        serif: ['var(--font-kaisei)'],
+        Quicksand: ["var(--font-Quicksand)"],
       },
       typography: {
         quoteless: {
           css: {
-            'blockquote p:first-of-type::before': { content: 'none' },
-            'blockquote p:first-of-type::after': { content: 'none' },
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
           },
         },
       },
@@ -23,5 +27,5 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require("@tailwindcss/typography")],
 };

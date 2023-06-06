@@ -1,37 +1,37 @@
-import './global.css';
-import clsx from 'clsx';
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import Sidebar from '../components/sidebar';
-import { Analytics } from '@vercel/analytics/react';
+import "./global.css";
+import clsx from "clsx";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import Sidebar from "../components/sidebar";
+import { Analytics } from "@vercel/analytics/react";
 
-const kaisei = localFont({
-  src: '../public/fonts/kaisei-tokumin-latin-700-normal.woff2',
-  weight: '700',
-  variable: '--font-kaisei',
-  display: 'swap',
+const Quicksand = localFont({
+  src: "../public/fonts/Quicksand-Regular.ttf",
+  weight: "700",
+  variable: "--font-Quicksand",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mahshid Asoodekhah',
-    template: '%s | Mahshid Asoodekhah',
+    default: "Mahshid Asoodekhah",
+    template: "%s | Mahshid Asoodekhah",
   },
-  description: 'Developer, writer, and creator.',
+  description: "Developer, writer, and creator.",
   openGraph: {
-    title: 'Mahshid Asoodekhah',
-    description: 'Developer, writer, and creator.',
-    url: 'https://leerob.io',
-    siteName: 'Mahshid Asoodekhah',
+    title: "Mahshid Asoodekhah",
+    description: "Developer, writer, and creator.",
+    url: "https://leerob.io",
+    siteName: "Mahshid Asoodekhah",
     images: [
       {
-        url: 'https://leerob.io/og.jpg',
+        url: "https://leerob.io/og.jpg",
         width: 1920,
         height: 1080,
       },
     ],
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -39,21 +39,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   twitter: {
-    title: 'Mahshid Asoodekhah',
-    card: 'summary_large_image',
+    title: "Mahshid Asoodekhah",
+    card: "summary_large_image",
   },
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: "/favicon.ico",
   },
   verification: {
-    google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
-    yandex: '14d2e73487fa6c71',
+    google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
+    yandex: "14d2e73487fa6c71",
   },
 };
 
@@ -66,16 +66,16 @@ export default function RootLayout({
     <html
       lang="en"
       className={clsx(
-        'text-black bg-white dark:text-white dark:bg-[#111010]',
-        kaisei.variable
+        "text-black  bg-white dark:text-white dark:bg-[#111010] font-Quicksand",
+        Quicksand.variable,
+        "font-Quicksand"
       )}
     >
-      <body className="antialiased max-w-4xl mb-40 flex flex-col md:flex-row mx-4 mt-8 md:mt-20 lg:mt-32 lg:mx-auto">
-        <Sidebar />
-        <main className="flex-auto min-w-0 mt-6 md:mt-0 flex flex-col px-2 md:px-0">
+      <body className="bg-customGray   flex flex-row   h-screen">
+        <main className="flex-auto min-w-0 mt-6 md:mt-0 flex flex-col px-2 md:px-0 h-full">
           {children}
-          <Analytics />
         </main>
+        <Sidebar />
       </body>
     </html>
   );
