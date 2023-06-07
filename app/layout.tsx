@@ -2,7 +2,7 @@ import "./global.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../containers/sidebar";
 import { Analytics } from "@vercel/analytics/react";
 
 const Quicksand = localFont({
@@ -14,15 +14,15 @@ const Quicksand = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mahshid Asoodekhah",
-    template: "%s | Mahshid Asoodekhah",
+    default: "Mahshid Asoudehkhah",
+    template: "%s | Mahshid Asoudehkhah",
   },
-  description: "Developer, writer, and creator.",
+  description: "Graphic designer",
   openGraph: {
-    title: "Mahshid Asoodekhah",
-    description: "Developer, writer, and creator.",
-    url: "https://leerob.io",
-    siteName: "Mahshid Asoodekhah",
+    title: "Mahshid Asoudehkhah",
+    description: "Graphic designer",
+    url: "https://mahshidasoudehkhah.com/",
+    siteName: "Mahshid Asoudehkhah",
     images: [
       {
         url: "https://leerob.io/og.jpg",
@@ -45,16 +45,16 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Mahshid Asoodekhah",
+    title: "Mahshid Asoudehkhah",
     card: "summary_large_image",
   },
   icons: {
     shortcut: "/favicon.ico",
   },
-  verification: {
-    google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
-    yandex: "14d2e73487fa6c71",
-  },
+  // verification: {
+  //   google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
+  //   yandex: "14d2e73487fa6c71",
+  // },
 };
 
 export default function RootLayout({

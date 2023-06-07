@@ -1,97 +1,125 @@
-import type { Metadata } from "next";
-import {
-  LinkedinIcon,
-  InstagramIcon,
-  ArrowIcon,
-  TwitterIcon,
-} from "components/icons";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "VP of Developer Experience at Vercel.",
+import type { Metadata } from "next";
+import { useForm, SubmitHandler } from "react-hook-form";
+import axios from "axios";
+
+// export const metadata: Metadata = {
+//   title: "About",
+//   description: "VP of Developer Experience at Vercel.",
+// };
+type FormValues = {
+  name: string;
+  email: string;
+  message: string;
 };
-const Mailto = ({ email, subject, body, children }) => {
-  return (
-    <a
-      href={`mailto:${email}?subject=${
-        encodeURIComponent(subject) || ""
-      }&body=${encodeURIComponent(body) || ""}`}
-    >
-      {children}
-    </a>
-  );
-};
+
 export default function AboutPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+    // axios
+    //   .post("https://formbold.com/s/oJpPE", data)
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  };
   return (
     <section className="w-full md:w-1/2 bg-white ml-auto h-full justify-center">
-      <Mailto email="foo@bar.baz" subject="Hello & Welcome" body="Hello world!">
-        Mail me!
-      </Mailto>
-      ,
-      {/* <div className="prose prose-neutral dark:prose-invert text-white dark:text-neutral-200">
-        <p>
-          Lorem ipsum dolor sit amet consectetur
-          <b> adipisicing elit. Modi est dolore</b>
-          neque provident nulla voluptatem?
-        </p>
-        <hr />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum,
-          architecto. Praesentium nisi impedit iure perferendis id ratione ad
-          dolores, obcaecati iste provident quaerat quibusdam et debitis minima
-          quod fugit aspernatur excepturi. Voluptatem aperiam quia beatae
-          voluptatibus ut. Dolores, consequatur delectus commodi eaque
-          recusandae molestiae, eum aliquam pariatur minima, cum id!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi id autem
-          quidem ad, facere obcaecati!
-        </p>
-        <p className="mb-8">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit nulla
-          ratione porro saepe? Rerum mollitia laudantium consectetur veritatis
-          maxime dolorem quas perspiciatis autem repudiandae enim optio possimus
-          similique, aut repellat.
-        </p>
-        <div className="flex flex-col gap-2 md:flex-row md:gap-2">
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://twitter.com"
-            className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-white dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-          >
-            <div className="flex items-center">
-              <TwitterIcon />
-              <div className="ml-3">Twitter</div>
+      <div className="container mx-auto">
+        <div className="max-w-md mx-auto my-10 bg-white p-5 ">
+          <h2 className="text-2xl font-bold mb-5">Contact Me</h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-semibold mb-1"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                className={`w-full px-4 py-2 rounded-md border ${
+                  errors.name ? "border-red-500" : "border-gray-300"
+                }`}
+                placeholder="Enter your name"
+                {...register("name", { required: "Name is required" })}
+              />
+              {errors.name && (
+                <span className="text-red-500 text-sm">
+                  {errors.name.message}
+                </span>
+              )}
             </div>
-            <ArrowIcon />
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://linkedin.com"
-            className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-white dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-          >
-            <div className="flex items-center">
-              <LinkedinIcon />
-              <div className="ml-3">Linkedin</div>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-semibold mb-1"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                className={`w-full px-4 py-2 rounded-md border ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                }`}
+                placeholder="Enter your email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
-            <ArrowIcon />
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.instagram.com"
-            className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-white dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-          >
-            <div className="flex items-center">
-              <InstagramIcon />
-              <div className="ml-3">Instagram</div>
+            <div className="mb-4">
+              <label
+                htmlFor="message"
+                className="block text-gray-700 font-semibold mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                className={`w-full px-4 py-2 rounded-md border ${
+                  errors.message ? "border-red-500" : "border-gray-300"
+                }`}
+                rows={4}
+                placeholder="Enter your message"
+                {...register("message", { required: "Message is required" })}
+              />
+              {errors.message && (
+                <span className="text-red-500 text-sm">
+                  {errors.message.message}
+                </span>
+              )}
             </div>
-            <ArrowIcon />
-          </a>
+
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+            >
+              Submit
+            </button>
+          </form>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }
