@@ -45,7 +45,7 @@ export default function Navbar() {
         </button>
       ) : (
         <>
-          {pathname == "/about" ? (
+          {pathname == "/about" || pathname == "/project" ? (
             <button
               className={styles.hamburger_menu_btn}
               onClick={toggleMenu}
