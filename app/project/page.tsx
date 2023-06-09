@@ -1,24 +1,29 @@
+"use client";
 import type { Metadata } from "next";
-import {
-  LinkedinIcon,
-  InstagramIcon,
-  ArrowIcon,
-  TwitterIcon,
-} from "components/icons";
+
+import { useIntersectionObserver } from "utils/useIntersectionObserver";
+import { useRef } from "react";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Project",
   description: "VP of Developer Experience at Vercel.",
 };
 
 export default function ProjectPage() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const entry = useIntersectionObserver(ref, {});
+  const isVisible = !!entry?.isIntersecting;
+
+  const ref2 = useRef<HTMLDivElement | null>(null);
+  const entry2 = useIntersectionObserver(ref2, {});
+  const isVisible2 = !!entry2?.isIntersecting;
   return (
     <>
       <div className="flex flex-row h-full overflow-hidden">
         <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
           <div className="grid  place-items-center mt-auto  p-5">
             <span className="px-5 text-white ">
-              <div className=" my-5 ">
+              <div className=" my-5 " ref={ref}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Suscipit laboriosam accusamus perferendis iure id quidem quia
                 at! Vero, autem laudantium aut ut deserunt cupiditate
@@ -33,7 +38,7 @@ export default function ProjectPage() {
                 quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
                 dolore, distinctio esse optio tempore.
               </div>
-              <div className=" my-5 ">
+              <div className=" my-5 " ref={ref2}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Suscipit laboriosam accusamus perferendis iure id quidem quia
                 at! Vero, autem laudantium aut ut deserunt cupiditate
@@ -194,8 +199,20 @@ export default function ProjectPage() {
               </span>
               <span className="px-5">
                 <h1 className=" text-3xl text-white py-5">Book Illustration</h1>
-                <h1 className=" text-2xl text-white  pl-5">zarrafe</h1>
-                <h1 className=" text-2xl text-white  pl-5">ye zarre erfan</h1>
+                <h1
+                  className={`text-2xl text-white  pl-5 ${
+                    isVisible && "line-through"
+                  }`}
+                >
+                  zarrafe
+                </h1>
+                <h1
+                  className={`text-2xl text-white  pl-5 ${
+                    isVisible2 && "line-through"
+                  }`}
+                >
+                  ye zarre erfan
+                </h1>
                 <a href="#12" className={``}>
                   <h1 className=" text-2xl text-white  pl-5">khayyam</h1>
                 </a>
