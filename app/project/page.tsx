@@ -1,231 +1,128 @@
 "use client";
-import type { Metadata } from "next";
 
 import { useIntersectionObserver } from "utils/useIntersectionObserver";
-import { useRef } from "react";
-
-export const metadata: Metadata = {
-  title: "Project",
-  description: "VP of Developer Experience at Vercel.",
-};
+import { useRef, useState } from "react";
+import Image from "next/image";
+import list from "./List";
+import { ImageData } from "Interfaces/ImageData";
 
 export default function ProjectPage() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const entry = useIntersectionObserver(ref, {});
-  const isVisible = !!entry?.isIntersecting;
+  const numElements = list.reduce((acc, item) => acc + item.subs.length, 1);
+  const refs = Array.from({ length: numElements }, () =>
+    useRef<HTMLDivElement | null>(null)
+  );
+  const entries = refs.map((ref) => useIntersectionObserver(ref, {}));
+  const isVisible = entries.map((entry) => !!entry?.isIntersecting);
 
-  const ref2 = useRef<HTMLDivElement | null>(null);
-  const entry2 = useIntersectionObserver(ref2, {});
-  const isVisible2 = !!entry2?.isIntersecting;
+  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const openModal = (image: ImageData) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === modalRef.current) {
+      closeModal();
+    }
+  };
+
+  function getReferenceById(id: number): React.RefObject<HTMLDivElement> {
+    return refs[id];
+  }
+
   return (
-    <>
-      <div className="flex flex-row h-full overflow-hidden">
-        <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
-          <div className="grid  place-items-center mt-auto  p-5">
-            <span className="px-5 text-white ">
-              <div className=" my-5 " ref={ref}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
+    <div className="flex flex-row h-full overflow-hidden">
+      <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
+        <div className="grid  place-items-center mt-auto p-5">
+          {list.map((category) =>
+            category.subs.map((subcategory) => (
+              <div
+                key={subcategory.id}
+                className="my-5 relative"
+                ref={getReferenceById(subcategory.id)}
+              >
+                <span className="px-5">
+                  <h1
+                    id={subcategory.id.toString()}
+                    className="text-5xl text-white"
+                  >
+                    {subcategory.title}
+                  </h1>
+                </span>
+                <div className="flex flex-wrap justify-center">
+                  {subcategory.imagesTitle.map((image) => (
+                    <div key={image.id} className="m-3 cursor-pointer relative">
+                      <Image
+                        className="object-fill"
+                        width={200}
+                        height={200}
+                        src={image.thumbnail}
+                        alt={image.title}
+                        onClick={() => openModal(image)}
+                      />
+                      <div
+                        className="absolute top-0 left-0 w-full h-full bg-customBlue bg-opacity-50 flex justify-center items-center opacity-0 transition-opacity hover:opacity-100"
+                        onClick={() => openModal(image)}
+                      >
+                        <span className="text-white text-4xl">+</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {selectedImage && (
+                  <div
+                    onClick={handleModalClick}
+                    className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-black bg-opacity-80"
+                    ref={modalRef}
+                  >
+                    <img
+                      className="max-w-5xl max-h-5xl"
+                      src={selectedImage.fullSize}
+                      alt={selectedImage.title}
+                    />
+                  </div>
+                )}
               </div>
-              <div className=" my-5 " ref={ref2}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-              <div className=" my-5 ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Suscipit laboriosam accusamus perferendis iure id quidem quia
-                at! Vero, autem laudantium aut ut deserunt cupiditate
-                voluptatibus accusamus vel, impedit molestias inventore libero
-                corporis recusandae eius animi delectus facere nostrum fugit
-                ducimus beatae iure debitis dolor? Dicta corporis odit molestiae
-                corrupti atque assumenda, repellendus, sed in quibusdam
-                reprehenderit eveniet necessitatibus ut sequi aperiam non. Modi
-                quibusdam adipisci eius harum est ipsam, saepe sint, maxime
-                cumque blanditiis exercitationem magni totam iure tempore
-                recusandae nihil laudantium necessitatibus a temporibus
-                quisquam? Nemo amet fugiat earum nihil id recusandae sit ratione
-                dolore, distinctio esse optio tempore.
-              </div>
-            </span>
-          </div>
-        </section>
-        <section className="w-full md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
-          <div className="grid  place-items-center mt-auto h-full p-5">
-            <span className="px-5">
-              <span className="px-5">
-                <h1 className=" text-5xl text-white py-5">Project</h1>
-              </span>
-              <span className="px-5">
-                <h1 className=" text-3xl text-white py-5">Book Illustration</h1>
+            ))
+          )}
+        </div>
+      </section>
+      <section className="collapse md:visible w-0 md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
+        <div className="grid  place-items-center mt-auto h-full p-5">
+          <span className="px-5">
+            <h1 className="text-5xl text-white py-5">Project</h1>
+            {list.map((category) => (
+              <div key={category.id}>
                 <h1
-                  className={`text-2xl text-white  pl-5 ${
-                    isVisible && "line-through"
+                  className={`text-3xl text-white py-5 ${
+                    category.subs.some(
+                      (subcategory) => isVisible[subcategory.id]
+                    ) && "line-through"
                   }`}
                 >
-                  zarrafe
+                  {category.title}
                 </h1>
-                <h1
-                  className={`text-2xl text-white  pl-5 ${
-                    isVisible2 && "line-through"
-                  }`}
-                >
-                  ye zarre erfan
-                </h1>
-                <a href="#12" className={``}>
-                  <h1 className=" text-2xl text-white  pl-5">khayyam</h1>
-                </a>
-                <h1 className=" text-2xl text-white  pl-5">chichast</h1>
-                <h1 className=" text-2xl text-white  pl-5">tabaghe sevom</h1>
-              </span>
-              <span className="px-5">
-                <h1 className=" text-3xl text-white py-5">Graphic Design</h1>
-              </span>
-            </span>
-          </div>
-        </section>
-      </div>
-    </>
+                {category.subs.map((subcategory) => (
+                  <a key={subcategory.id} href={`#${subcategory.id}`}>
+                    <h1
+                      className={`text-2xl text-white pl-5 ${
+                        isVisible[subcategory.id] && "line-through"
+                      }`}
+                    >
+                      {subcategory.title}
+                    </h1>
+                  </a>
+                ))}
+              </div>
+            ))}
+          </span>
+        </div>
+      </section>
+    </div>
   );
 }

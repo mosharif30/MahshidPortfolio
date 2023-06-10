@@ -3,7 +3,6 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Sidebar from "../containers/sidebar";
-import { Analytics } from "@vercel/analytics/react";
 
 const Quicksand = localFont({
   src: "../public/fonts/Quicksand-Regular.ttf",
@@ -72,7 +71,7 @@ export default function RootLayout({
       )}
     >
       <body className="bg-customGray   flex flex-row   h-screen">
-        <main className="flex-auto min-w-0 mt-6 md:mt-0 flex flex-col px-2 md:px-0 h-full">
+        <main className="flex-auto min-w-0  md:mt-0 flex flex-col  md:px-0 h-full">
           {children}
         </main>
         <Sidebar />

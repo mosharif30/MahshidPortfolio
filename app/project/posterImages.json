@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Image 1",
+    "thumbnail": "/images/posters/1.jpg",
+    "fullSize": "/images/posters/1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Image 2",
+    "thumbnail": "/images/posters/2.jpg",
+    "fullSize": "/images/posters/2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Image 3",
+    "thumbnail": "/images/posters/3.jpg",
+    "fullSize": "/images/posters/3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Image 4",
+    "thumbnail": "/images/posters/4.jpg",
+    "fullSize": "/images/posters/4.jpg"
+  }
+]

@@ -7,7 +7,7 @@ interface Args extends IntersectionObserverInit {
 export function useIntersectionObserver(
   elementRef: RefObject<Element>,
   {
-    threshold = 0.5,
+    threshold = 0.3,
     root = null,
     rootMargin = "0%",
     freezeOnceVisible = false,

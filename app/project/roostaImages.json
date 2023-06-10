@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Image 1",
+    "thumbnail": "/images/roosta/1.jpg",
+    "fullSize": "/images/roosta/1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Image 2",
+    "thumbnail": "/images/roosta/2.jpg",
+    "fullSize": "/images/roosta/2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Image 3",
+    "thumbnail": "/images/roosta/3.jpg",
+    "fullSize": "/images/roosta/3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Image 4",
+    "thumbnail": "/images/roosta/4.jpg",
+    "fullSize": "/images/roosta/4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Image 5",
+    "thumbnail": "/images/roosta/5.jpg",
+    "fullSize": "/images/roosta/5.jpg"
+  }
+]
