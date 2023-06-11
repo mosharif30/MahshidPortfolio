@@ -24,14 +24,14 @@ export default function AboutPage() {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
 
-    // axios
-    //   .post("https://formbold.com/s/oJpPE", data)
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post("https://formbold.com/s/oJpPE", data)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return (
     <section className="w-full md:w-1/2 bg-white ml-auto h-full justify-center">

@@ -2,7 +2,6 @@
 
 import { useIntersectionObserver } from "utils/useIntersectionObserver";
 import { useRef, useState } from "react";
-import Image from "next/image";
 import list from "./List";
 import { ImageData } from "Interfaces/ImageData";
 
@@ -57,7 +56,7 @@ export default function ProjectPage() {
                 <div className="flex flex-wrap justify-center">
                   {subcategory.imagesTitle.map((image) => (
                     <div key={image.id} className="m-3 cursor-pointer relative">
-                      <Image
+                      <img
                         className="object-fill"
                         width={200}
                         height={200}
