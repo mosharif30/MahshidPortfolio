@@ -1,8 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { FormValues } from "Interfaces/Types";
+
+interface Status {
+  loading: boolean;
+  success: boolean;
+  error: string;
+}
 
 const Contact = () => {
   const {
@@ -12,31 +18,32 @@ const Contact = () => {
     reset,
   } = useForm<FormValues>();
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<Status>({
+    loading: false,
+    success: false,
+    error: "",
+  });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setStatus({ loading: true, success: false, error: "" });
+
     try {
-      setLoading(true);
-      const response = await submitForm(data);
+      const response = await axios.post("https://formbold.com/s/oJpPE", data);
       console.log(response);
-      setSuccess(true);
+      setStatus({ loading: false, success: true, error: "" });
       reset(); // Reset the form inputs
     } catch (error) {
       console.log(error);
-      setError("An error occurred. Please try again later.");
-    } finally {
-      setLoading(false);
+      setStatus({
+        loading: false,
+        success: false,
+        error: "An error occurred. Please try again later.",
+      });
     }
   };
 
-  const submitForm = async (data: FormValues) => {
-    return axios.post("https://formbold.com/s/oJpPE", data);
-  };
-
   return (
-    <section className="w-full  md:w-1/2 bg-white ml-auto h-full justify-center">
+    <section className="w-full md:w-1/2 bg-white ml-auto h-full justify-center">
       <div className="container mx-auto h-full mt-auto">
         <div className="max-w-lg mx-auto my-10 bg-white p-5">
           <div className="flex justify-between mb-10">
@@ -124,21 +131,23 @@ const Contact = () => {
 
             <button
               type="submit"
-              disabled={loading}
-              className={`  text-white font-semibold py-2 px-4 rounded-md ${
-                loading ? "bg-customGray" : "bg-customBlue"
+              disabled={status.loading}
+              className={`text-white font-semibold py-2 px-4 rounded-md ${
+                status.loading ? "bg-customGray" : "bg-customBlue"
               }`}
             >
-              {loading ? "Submitting..." : "Submit"}
+              {status.loading ? "Submitting..." : "Submit"}
             </button>
-            {success && (
+            {status.success && (
               <p className="text-green-500 mt-2">
                 Form submitted successfully!
               </p>
             )}
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {status.error && (
+              <p className="text-red-500 mt-2">{status.error}</p>
+            )}
           </form>
-          <span className="inline-block rounded-md text-2xl md:text-2xl lg:text-2xl  text-customBlue mt-10">
+          <span className="inline-block rounded-md text-2xl md:text-2xl lg:text-2xl text-customBlue mt-10">
             mahshidasoudekhah@gmail.com
           </span>
         </div>
