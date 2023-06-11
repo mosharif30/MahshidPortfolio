@@ -2,7 +2,7 @@ import "./global.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Sidebar from "../containers/sidebar";
+import Sidebar from "../containers/Sidebar/sidebar";
 
 const Quicksand = localFont({
   src: "../public/fonts/Quicksand-Regular.ttf",
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     description: "Graphic designer",
     url: "https://mahshidasoudehkhah.com/",
     siteName: "Mahshid Asoudehkhah",
-    images: [
-      {
-        url: "https://leerob.io/og.jpg",
-        width: 1920,
-        height: 1080,
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "https://leerob.io/og.jpg",
+    //     width: 1920,
+    //     height: 1080,
+    //   },
+    // ],
     locale: "en-US",
     type: "website",
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   icons: {
-    shortcut: "/favicon.ico",
+    shortcut: "/micon.png",
   },
   // verification: {
   //   google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",

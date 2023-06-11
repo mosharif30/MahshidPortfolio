@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import styles from "./sidebar.module.css";
-import { closeIcon } from "../components/icons";
+import { closeIcon } from "../../components/icons";
 import NavItem from "components/NavItem";
 import { navItems } from "components/navigationItems";
 

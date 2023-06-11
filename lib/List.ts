@@ -1,8 +1,8 @@
-import erfanImages from "./erfanImages.json";
-import chichastImages from "./chichastImages.json";
-import khayyamImages from "./khayyamImages.json";
-import roostaImages from "./roostaImages.json";
-import posterImages from "./posterImages.json";
+import erfanImages from "./imagesJson/erfanImages.json";
+import chichastImages from "./imagesJson/chichastImages.json";
+import khayyamImages from "./imagesJson/khayyamImages.json";
+import roostaImages from "./imagesJson/roostaImages.json";
+import posterImages from "./imagesJson/posterImages.json";
 const list = [
   {
     id: 1,
