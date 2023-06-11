@@ -6,7 +6,7 @@ import posterImages from "./imagesJson/posterImages.json";
 const list = [
   {
     id: 1,
-    title: "book ill",
+    title: "book illustration",
     subs: [
       { id: 1, title: "ye zarre erfan", imagesTitle: erfanImages },
       { id: 2, title: "chichast", imagesTitle: chichastImages },

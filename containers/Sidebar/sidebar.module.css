@@ -14,18 +14,21 @@
   z-index: 10;
 }
 
+.hamburger_line,
+.hamburger_line_white {
+  height: 4px;
+  width: 25px;
+  margin-bottom: 4px;
+}
+
 .hamburger_line {
   background-color: #1a56f4;
-  height: 4px;
-  width: 25px;
-  margin-bottom: 4px;
 }
+
 .hamburger_line_white {
   background-color: #ffffff;
-  height: 4px;
-  width: 25px;
-  margin-bottom: 4px;
 }
+
 .hamburger_menu {
   position: absolute;
   top: 0;
@@ -34,7 +37,10 @@
   width: 50vw;
   background-color: #fff;
   z-index: 9;
-  @media only screen and (max-width: 764px) {
+}
+
+@media only screen and (max-width: 764px) {
+  .hamburger_menu {
     width: 100vw;
   }
 }

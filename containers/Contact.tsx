@@ -2,12 +2,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-type FormValues = {
-  name: string;
-  email: string;
-  message: string;
-};
+import { FormValues } from "Interfaces/Types";
 
 const Contact = () => {
   const {
@@ -66,7 +61,7 @@ const Contact = () => {
                 id="name"
                 className={`w-full px-4 py-2 rounded-md border ${
                   errors.name ? "border-red-500" : "border-gray-300"
-                } focus:outline-none focus:border-blue-500`}
+                } focus:outline-none focus:border-customBlue`}
                 placeholder="Enter your name"
                 {...register("name", { required: "Name is required" })}
               />
@@ -88,7 +83,7 @@ const Contact = () => {
                 id="email"
                 className={`w-full px-4 py-2 rounded-md border ${
                   errors.email ? "border-red-500" : "border-gray-300"
-                } focus:outline-none focus:border-blue-500`}
+                } focus:outline-none focus:border-customBlue`}
                 placeholder="Enter your email"
                 {...register("email", {
                   required: "Email is required",
@@ -115,7 +110,7 @@ const Contact = () => {
                 id="message"
                 className={`w-full px-4 py-2 rounded-md border ${
                   errors.message ? "border-red-500" : "border-gray-300"
-                } focus:outline-none focus:border-blue-500`}
+                } focus:outline-none focus:border-customBlue`}
                 rows={2}
                 placeholder="Enter your message"
                 {...register("message", { required: "Message is required" })}
@@ -130,7 +125,9 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+              className={`  text-white font-semibold py-2 px-4 rounded-md ${
+                loading ? "bg-customGray" : "bg-customBlue"
+              }`}
             >
               {loading ? "Submitting..." : "Submit"}
             </button>

@@ -4,3 +4,8 @@ export interface ImageData {
   thumbnail: string;
   fullSize: string;
 }
+export type FormValues = {
+  name: string;
+  email: string;
+  message: string;
+};

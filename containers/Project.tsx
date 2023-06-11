@@ -3,7 +3,7 @@
 import { useIntersectionObserver } from "utils/useIntersectionObserver";
 import { useRef, useState } from "react";
 import list from "../lib/List";
-import { ImageData } from "Interfaces/ImageData";
+import { ImageData } from "Interfaces/Types";
 
 const Project = () => {
   const numElements = list.reduce((acc, item) => acc + item.subs.length, 1);
