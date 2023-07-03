@@ -17,7 +17,7 @@ export default function AboutPage() {
     document.body.removeChild(downloadLink);
   };
   return (
-    <section className="w-full md:w-1/2 bg-customBlue ml-auto h-full justify-center">
+    <section className="w-full md:w-1/2 bg-customBlue mr-auto h-full justify-center">
       <div className="grid  place-items-center mt-auto h-full p-5">
         <span className="px-5">
           <h1 className=" text-3xl text-white ">About</h1>

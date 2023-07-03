@@ -10,7 +10,7 @@
   padding: 10px;
   position: fixed;
   top: 1em;
-  right: 1em;
+  left: 1em;
   z-index: 10;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .hamburger_line {
-  background-color: #0288D1;
+  background-color: #0288d1;
 }
 
 .hamburger_line_white {
@@ -32,7 +32,7 @@
 .hamburger_menu {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 50vw;
   background-color: #fff;

@@ -34,7 +34,7 @@ const Project = () => {
     return refs[id];
   }
   return (
-    <div className="flex flex-row h-full overflow-hidden">
+    <div className="flex flex-row-reverse h-full overflow-hidden">
       <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
         <div className="grid  place-items-center mt-auto p-5">
           {list.map((category) =>
