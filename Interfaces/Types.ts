@@ -9,3 +9,8 @@ export type FormValues = {
   email: string;
   message: string;
 };
+export interface FormStatus {
+  loading: boolean;
+  success: boolean;
+  error: string;
+}

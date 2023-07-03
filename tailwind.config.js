@@ -8,7 +8,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: { customBlue: "#1a56f4", customGray: "#949599" },
+      colors: { customBlue: "#0288D1", customGray: "#CFD8DC" },
       width: {
         half: "50vw",
       },

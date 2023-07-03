@@ -71,6 +71,7 @@ export default function RootLayout({
       )}
     >
       <body className="bg-customGray   flex flex-row   h-screen">
+        
         <main className="flex-auto min-w-0  md:mt-0 flex flex-col  md:px-0 h-full">
           {children}
         </main>

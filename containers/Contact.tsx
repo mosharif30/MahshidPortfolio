@@ -2,13 +2,7 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
-import { FormValues } from "Interfaces/Types";
-
-interface Status {
-  loading: boolean;
-  success: boolean;
-  error: string;
-}
+import { FormStatus, FormValues } from "Interfaces/Types";
 
 const Contact = () => {
   const {
@@ -18,7 +12,7 @@ const Contact = () => {
     reset,
   } = useForm<FormValues>();
 
-  const [status, setStatus] = useState<Status>({
+  const [status, setStatus] = useState<FormStatus>({
     loading: false,
     success: false,
     error: "",
@@ -29,6 +23,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post("https://formbold.com/s/oJpPE", data);
+
       console.log(response);
       setStatus({ loading: false, success: true, error: "" });
       reset(); // Reset the form inputs
@@ -43,8 +38,8 @@ const Contact = () => {
   };
 
   return (
-    <section className="w-full md:w-1/2 bg-white ml-auto h-full justify-center">
-      <div className="container mx-auto h-full mt-auto">
+    <section className="w-full md:w-1/2 bg-white ml-auto h-full justify-center  ">
+      <div className="container mx-auto max-h-screen mt-auto">
         <div className="max-w-lg mx-auto my-10 bg-white p-5">
           <div className="flex justify-between mb-10">
             <span className="inline-block rounded-md text-xl text-customBlue">
