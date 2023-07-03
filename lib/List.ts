@@ -8,10 +8,10 @@ const list = [
     id: 1,
     title: "book illustration",
     subs: [
-      { id: 1, title: "ye zarre erfan", imagesTitle: erfanImages },
-      { id: 2, title: "chichast", imagesTitle: chichastImages },
+      { id: 1, title: "A bit Theosophy", imagesTitle: erfanImages },
+      { id: 2, title: "Secret of the Chichast`s Monster", imagesTitle: chichastImages },
       { id: 3, title: "khayyam", imagesTitle: khayyamImages },
-      { id: 4, title: "roostaye pellekani", imagesTitle: roostaImages },
+      { id: 4, title: "Staircase Village", imagesTitle: roostaImages },
     ],
   },
   {
