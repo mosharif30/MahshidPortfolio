@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./sidebar.module.css";
 import { closeIcon } from "../../components/icons";
 import NavItem from "components/NavItem";
@@ -29,31 +29,24 @@ export default function Navbar() {
   };
 
   const hamburgerLineClassName =
-    pathname === "/about" || pathname === "/project"
-      ? styles.hamburger_line_white
-      : styles.hamburger_line;
+    "h-1 w-6 mb-1 " +
+    (pathname === "/about" || pathname === "/project"
+      ? "bg-white"
+      : "bg-customBlue");
 
   return (
-    <div className="relative" ref={menuRef}>
-      {isMenuOpen ? (
-        <button
-          className={styles.hamburger_menu_btn}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {closeIcon()}
-        </button>
-      ) : (
-        <button
-          className={styles.hamburger_menu_btn}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {[1, 2, 3].map((index) => (
-            <span key={index} className={hamburgerLineClassName} />
-          ))}
-        </button>
-      )}
+    <div className="relative " ref={menuRef}>
+      <button
+        className="appearance-none bg-none border-none cursor-pointer flex flex-col justify-center items-center p-2 fixed top-4 left-4 z-10"
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        {isMenuOpen
+          ? closeIcon()
+          : [1, 2, 3].map((index) => (
+              <span key={index} className={hamburgerLineClassName} />
+            ))}
+      </button>
 
       {isMenuOpen && (
         <div className={styles.hamburger_menu}>
@@ -65,7 +58,8 @@ export default function Navbar() {
               >
                 <div className="flex flex-col space-x-0 items-center justify-center h-screen mx-auto w-full">
                   <div className="justify-start">
-                    {Object.entries(navItems).map(([path, { name, subs }]) => {
+                    {Object.keys(navItems).map((path) => {
+                      const { name } = navItems[path];
                       const isActive = path === pathname;
                       return (
                         <NavItem
@@ -74,7 +68,6 @@ export default function Navbar() {
                           name={name}
                           isActive={isActive}
                           setIsMenuOpen={setIsMenuOpen}
-                          pathname={pathname}
                         />
                       );
                     })}

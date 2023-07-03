@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface ImageData {
   id: number;
   title: string;
@@ -13,4 +15,10 @@ export interface FormStatus {
   loading: boolean;
   success: boolean;
   error: string;
+}
+export interface NavItemProps {
+  path: string;
+  isActive: boolean;
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  name: string;
 }

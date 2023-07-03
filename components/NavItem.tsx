@@ -1,8 +1,13 @@
 import clsx from "clsx";
+import { NavItemProps } from "Interfaces";
 import Link from "next/link";
-import React from "react";
 
-const NavItem = ({ path, isActive, setIsMenuOpen, pathname, name }) => {
+const NavItem: React.FC<NavItemProps> = ({
+  path,
+  isActive,
+  setIsMenuOpen,
+  name,
+}) => {
   const handleClick = () => {
     setIsMenuOpen(false);
   };

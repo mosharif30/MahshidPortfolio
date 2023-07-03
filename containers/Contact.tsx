@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
-import { FormStatus, FormValues } from "Interfaces/Types";
+import { FormStatus, FormValues } from "Interfaces";
 
 const Contact = () => {
   const {

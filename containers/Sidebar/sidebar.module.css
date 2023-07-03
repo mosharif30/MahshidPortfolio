@@ -1,34 +1,3 @@
-.hamburger_menu_btn {
-  appearance: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  position: fixed;
-  top: 1em;
-  left: 1em;
-  z-index: 10;
-}
-
-.hamburger_line,
-.hamburger_line_white {
-  height: 4px;
-  width: 25px;
-  margin-bottom: 4px;
-}
-
-.hamburger_line {
-  background-color: #0288d1;
-}
-
-.hamburger_line_white {
-  background-color: #ffffff;
-}
-
 .hamburger_menu {
   position: absolute;
   top: 0;
