@@ -36,7 +36,7 @@ const Project = () => {
   return (
     <div className="flex flex-row-reverse h-full overflow-hidden">
       <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
-        <div className="grid  place-items-center mt-auto p-5">
+        <div className="grid  place-items-center mt-auto p-1">
           {list.map((category) =>
             category.subs.map((subcategory) => (
               <div
@@ -44,10 +44,10 @@ const Project = () => {
                 className="my-5 relative"
                 ref={getReferenceById(subcategory.id)}
               >
-                <span className="px-5">
+                <span className="flex justify-center">
                   <h1
                     id={subcategory.id.toString()}
-                    className="text-5xl text-white"
+                    className="text-3xl text-customBlue"
                   >
                     {subcategory.title}
                   </h1>
@@ -75,7 +75,7 @@ const Project = () => {
                 {selectedImage && (
                   <div
                     onClick={handleModalClick}
-                    className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-black bg-opacity-80"
+                    className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center  bg-black bg-opacity-80"
                     ref={modalRef}
                   >
                     <img
@@ -93,11 +93,11 @@ const Project = () => {
       <section className="collapse md:visible w-0 md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
         <div className="grid  place-items-center mt-auto h-full p-5">
           <span className="px-5">
-            <h1 className="text-5xl text-white py-5">Project</h1>
+            <h1 className="text-3xl text-white py-5">Project</h1>
             {list.map((category) => (
               <div key={category.id}>
                 <h1
-                  className={`text-3xl text-white py-5 ${
+                  className={`text-xl text-white py-5 ${
                     category.subs.some(
                       (subcategory) => isVisible[subcategory.id]
                     ) && "line-through"
@@ -108,7 +108,7 @@ const Project = () => {
                 {category.subs.map((subcategory) => (
                   <a key={subcategory.id} href={`#${subcategory.id}`}>
                     <h1
-                      className={`text-2xl text-white pl-5 ${
+                      className={`text-xl text-white pl-5 ${
                         isVisible[subcategory.id] && "line-through"
                       }`}
                     >

@@ -49,12 +49,12 @@ const Contact = () => {
               Facebook
             </span>
           </div>
-          <h2 className="text-2xl font-bold mb-5">Contact Me</h2>
+          <h2 className="text-xl  mb-5">Contact Me</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
                 htmlFor="name"
-                className="block text-gray-700 font-semibold mb-1"
+                className="block text-gray-700  mb-1"
               >
                 Name
               </label>
@@ -76,7 +76,7 @@ const Contact = () => {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-semibold mb-1"
+                className="block text-gray-700  mb-1 "
               >
                 Email
               </label>
@@ -104,7 +104,7 @@ const Contact = () => {
             <div className="mb-4">
               <label
                 htmlFor="message"
-                className="block text-gray-700 font-semibold mb-1"
+                className="block text-gray-700  mb-1"
               >
                 Message
               </label>
@@ -127,7 +127,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={status.loading}
-              className={`text-white font-semibold py-2 px-4 rounded-md ${
+              className={`text-white  py-2 px-4 rounded-md ${
                 status.loading ? "bg-customGray" : "bg-customBlue"
               }`}
             >
@@ -142,7 +142,7 @@ const Contact = () => {
               <p className="text-red-500 mt-2">{status.error}</p>
             )}
           </form>
-          <span className="inline-block rounded-md text-2xl md:text-2xl lg:text-2xl text-customBlue mt-10">
+          <span className="inline-block rounded-md   text-customBlue mt-10">
             mahshidasoudekhah@gmail.com
           </span>
         </div>

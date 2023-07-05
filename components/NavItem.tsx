@@ -13,7 +13,7 @@ const NavItem: React.FC<NavItemProps> = ({
   };
 
   const linkClassName = clsx(
-    "transition-all text-white hover:text-gray-200 dark:hover:text-neutral-200 flex align-middle text-4xl",
+    "transition-all text-white hover:text-gray-200 dark:hover:text-neutral-200 flex align-middle text-3xl",
     {
       "line-through": isActive,
     }
