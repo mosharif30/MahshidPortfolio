@@ -24,11 +24,11 @@ const Contact = () => {
     try {
       const response = await axios.post("https://formbold.com/s/oJpPE", data);
 
-      console.log(response);
-      setStatus({ loading: false, success: true, error: "" });
-      reset(); // Reset the form inputs
+      if (response.status === 201) {
+        setStatus({ loading: false, success: true, error: "" });
+        reset(); // Reset the form inputs
+      }
     } catch (error) {
-      console.log(error);
       setStatus({
         loading: false,
         success: false,
@@ -52,10 +52,7 @@ const Contact = () => {
           <h2 className="text-xl  mb-5">Contact Me</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-gray-700  mb-1"
-              >
+              <label htmlFor="name" className="block text-gray-700  mb-1">
                 Name
               </label>
               <input
@@ -74,10 +71,7 @@ const Contact = () => {
               )}
             </div>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700  mb-1 "
-              >
+              <label htmlFor="email" className="block text-gray-700  mb-1 ">
                 Email
               </label>
               <input
@@ -102,10 +96,7 @@ const Contact = () => {
               )}
             </div>
             <div className="mb-4">
-              <label
-                htmlFor="message"
-                className="block text-gray-700  mb-1"
-              >
+              <label htmlFor="message" className="block text-gray-700  mb-1">
                 Message
               </label>
               <textarea
@@ -134,9 +125,7 @@ const Contact = () => {
               {status.loading ? "Submitting..." : "Submit"}
             </button>
             {status.success && (
-              <p className="text-green-500 mt-2">
-                Form submitted successfully!
-              </p>
+              <p className="text-green-500 mt-2">Submission Successful</p>
             )}
             {status.error && (
               <p className="text-red-500 mt-2">{status.error}</p>

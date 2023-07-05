@@ -2,7 +2,7 @@ import "./global.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Sidebar from "../containers/Sidebar/sidebar";
+import Sidebar from "../components/Sidebar/sidebar";
 
 const Quicksand = localFont({
   src: "../public/fonts/Quicksand-Regular.ttf",
