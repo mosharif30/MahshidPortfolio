@@ -1,10 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./sidebar.module.css";
-import { closeIcon } from "../icons";
-import NavItem from "components/NavItem";
-import { navItems } from "components/navigationItems";
+import { closeIcon } from "../lib/icons";
+import { navItems } from "lib/navigationItems";
+import Link from "next/link";
+import clsx from "clsx";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +33,18 @@ export default function Navbar() {
     (pathname === "/about" || pathname === "/project"
       ? "bg-white"
       : "bg-customBlue");
+  const handleClick = () => {
+    setIsMenuOpen(false);
+  };
 
+  const linkClassName = (isActive: boolean) => {
+    return clsx(
+      "transition-all text-white hover:text-gray-200 dark:hover:text-neutral-200 flex align-middle text-3xl",
+      {
+        "line-through": isActive,
+      }
+    );
+  };
   return (
     <div className="relative " ref={menuRef}>
       <button
@@ -49,7 +60,7 @@ export default function Navbar() {
       </button>
 
       {isMenuOpen && (
-        <div className={styles.hamburger_menu}>
+        <div className="hamburger_menu">
           <aside className="md:flex-shrink-0 md:mx-0 md:px-0 bg-customBlue w-full h-full">
             <div className="lg:sticky lg:top-20">
               <nav
@@ -62,13 +73,16 @@ export default function Navbar() {
                       const { name } = navItems[path];
                       const isActive = path === pathname;
                       return (
-                        <NavItem
+                        <Link
+                          onClick={handleClick}
                           key={path}
-                          path={path}
-                          name={name}
-                          isActive={isActive}
-                          setIsMenuOpen={setIsMenuOpen}
-                        />
+                          href={path}
+                          className={linkClassName(isActive)}
+                        >
+                          <span className="relative py-[20px] px-[10px] my-auto">
+                            {name}
+                          </span>
+                        </Link>
                       );
                     })}
                   </div>

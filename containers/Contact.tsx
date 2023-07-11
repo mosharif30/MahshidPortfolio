@@ -36,7 +36,6 @@ const Contact = () => {
       });
     }
   };
-
   return (
     <section className="w-full md:w-1/2 bg-white mr-auto h-full justify-center  ">
       <div className="container mx-auto max-h-screen mt-auto">

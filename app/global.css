@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.hamburger_menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50vw;
+  background-color: #fff;
+  z-index: 9;
+}
+
+@media only screen and (max-width: 764px) {
+  .hamburger_menu {
+    width: 100vw;
+  }
+}
