@@ -70,9 +70,9 @@ export default function RootLayout({
         "font-Quicksand"
       )}
     >
-      <body className="bg-customGray   flex flex-row   h-screen">
+      <body className="bg-customGray flex flex-row-reverse h-screen  ">
         <Sidebar />
-        <main className="flex-auto min-w-0  md:mt-0 flex flex-col  md:px-0 h-full">
+        <main className="flex-auto w-screen  md:mt-0 flex flex-col   h-full">
           {children}
         </main>
       </body>

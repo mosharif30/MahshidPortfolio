@@ -54,11 +54,11 @@ const Project = () => {
                 </span>
                 <div className="flex flex-wrap justify-center">
                   {subcategory.imagesTitle.map((image) => (
-                    <div key={image.id} className="m-3 cursor-pointer relative">
+                    <div key={image.id} className="m-1 w-50 h-50 cursor-pointer relative">
                       <img
-                        className="object-fill"
-                        width={200}
-                        height={200}
+                        className="object-contain"
+                        width={150}
+                        height={70}
                         src={image.thumbnail}
                         alt={image.title}
                         onClick={() => openModal(image)}

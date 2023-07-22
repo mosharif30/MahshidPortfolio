@@ -39,7 +39,7 @@ const Contact = () => {
   return (
     <section className="w-full md:w-1/2 bg-white mr-auto h-full justify-center  ">
       <div className="container mx-auto max-h-screen mt-auto">
-        <div className="max-w-lg mx-auto my-10 bg-white p-5">
+        <div className="max-w-lg mx-auto my-7 bg-white p-5">
           <div className="flex justify-between mb-10">
             <span className="inline-block rounded-md text-xl text-customBlue">
               Instagram
@@ -57,10 +57,10 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
-                className={`w-full px-4 py-2 rounded-md border ${
-                  errors.name ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-2 placeholder:text-xs border-b-2 ${
+                  errors.name ? "border-red-500" : "border-0"
                 } focus:outline-none focus:border-customBlue`}
-                placeholder="Enter your name"
+                // placeholder="Enter your name"
                 {...register("name", { required: "Name is required" })}
               />
               {errors.name && (
@@ -76,10 +76,10 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
-                className={`w-full px-4 py-2 rounded-md border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-2 placeholder:text-xs border-b-2 ${
+                  errors.email ? "border-red-500" : "border-0"
                 } focus:outline-none focus:border-customBlue`}
-                placeholder="Enter your email"
+                // placeholder="Enter your email"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -100,11 +100,11 @@ const Contact = () => {
               </label>
               <textarea
                 id="message"
-                className={`w-full px-4 py-2 rounded-md border ${
-                  errors.message ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-2  placeholder:text-xs border-b-2 ${
+                  errors.message ? "border-red-500" : "border-0"
                 } focus:outline-none focus:border-customBlue`}
                 rows={2}
-                placeholder="Enter your message"
+                // placeholder="Enter your message"
                 {...register("message", { required: "Message is required" })}
               />
               {errors.message && (
@@ -117,20 +117,20 @@ const Contact = () => {
             <button
               type="submit"
               disabled={status.loading}
-              className={`text-white  py-2 px-4 rounded-md ${
-                status.loading ? "bg-customGray" : "bg-customBlue"
+              className={`text-customBlue font-bold pt-4   rounded-md ${
+                status.loading ? "text-customGray" : "text-customBlue"
               }`}
             >
               {status.loading ? "Submitting..." : "Submit"}
             </button>
             {status.success && (
-              <p className="text-green-500 mt-2">Submission Successful</p>
+              <p className="text-customGray mt-2">Submission Successful</p>
             )}
             {status.error && (
               <p className="text-red-500 mt-2">{status.error}</p>
             )}
           </form>
-          <span className="inline-block rounded-md   text-customBlue mt-10">
+          <span className="flex justify-end rounded-md text-sm ml-auto text-customBlue mt-10">
             mahshidasoudekhah@gmail.com
           </span>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { closeIcon } from "../lib/icons";
+import { closeIcon, hamburger } from "../lib/icons";
 import { navItems } from "lib/navigationItems";
 import Link from "next/link";
 import clsx from "clsx";
@@ -28,47 +28,49 @@ export default function Navbar() {
     }
   };
 
-  const hamburgerLineClassName =
-    "h-1 w-6 mb-1 " +
-    (pathname === "/about" || pathname === "/project"
-      ? "bg-white"
-      : "bg-customBlue");
   const handleClick = () => {
     setIsMenuOpen(false);
   };
 
   const linkClassName = (isActive: boolean) => {
     return clsx(
-      "transition-all text-white hover:text-gray-200 dark:hover:text-neutral-200 flex align-middle text-3xl",
+      `${
+        pathname == "/about" ? "text-customBlue" : "text-white"
+      } transition-all  hover:text-gray-200 dark:hover:text-neutral-200 flex align-middle text-4xl`,
       {
-        "line-through": isActive,
+        "mr-4": isActive,
       }
     );
   };
+
   return (
     <div className="relative " ref={menuRef}>
       <button
-        className="appearance-none bg-none border-none cursor-pointer flex flex-col justify-center items-center p-2 fixed top-4 left-4 z-10"
+        className="appearance-none bg-none border-none cursor-pointer flex flex-col justify-center items-center p-2 fixed top-4 right-4 z-10"
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
         {isMenuOpen
-          ? closeIcon()
-          : [1, 2, 3].map((index) => (
-              <span key={index} className={hamburgerLineClassName} />
-            ))}
+          ? pathname == "/about"
+            ? closeIcon("blue")
+            : closeIcon("white")
+          : hamburger()}
       </button>
 
       {isMenuOpen && (
         <div className="hamburger_menu">
-          <aside className="md:flex-shrink-0 md:mx-0 md:px-0 bg-customBlue w-full h-full">
+          <aside
+            className={`md:flex-shrink-0 md:mx-0 md:px-0 ${
+              pathname == "/about" ? "bg-white" : "bg-customBlue"
+            } w-full h-full`}
+          >
             <div className="lg:sticky lg:top-20">
               <nav
                 className="flex-col items-center relative pl-3 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
                 id="nav"
               >
                 <div className="flex flex-col space-x-0 items-center justify-center h-screen mx-auto w-full">
-                  <div className="justify-start">
+                  <div className="justify-start ">
                     {Object.keys(navItems).map((path) => {
                       const { name } = navItems[path];
                       const isActive = path === pathname;
@@ -85,6 +87,9 @@ export default function Navbar() {
                         </Link>
                       );
                     })}
+                    <span className="flex  rounded-md text-sm  text-white ">
+                      mahshidasoudekhah@gmail.com
+                    </span>
                   </div>
                 </div>
               </nav>
