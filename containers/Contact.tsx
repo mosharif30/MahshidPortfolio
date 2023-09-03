@@ -41,12 +41,22 @@ const Contact = () => {
       <div className="container mx-auto max-h-screen mt-auto">
         <div className="max-w-lg mx-auto my-7 bg-white p-5">
           <div className="flex justify-between mb-10">
-            <span className="inline-block rounded-md text-xl text-customBlue">
+            <a
+              href="https://www.instagram.com/mahshid.asoudehkhah/"
+              target="_blank" // This opens the link in a new tab
+              rel="noopener noreferrer" // Recommended for security reasons
+              className="inline-block rounded-md text-xl text-customBlue"
+            >
               Instagram
-            </span>
-            <span className="inline-block rounded-md text-xl text-customGray">
+            </a>
+            <a
+              href="https://www.facebook.com/your-facebook-account/"
+              target="_blank" // This opens the link in a new tab
+              rel="noopener noreferrer" // Recommended for security reasons
+              className="inline-block rounded-md text-xl text-customGray"
+            >
               Facebook
-            </span>
+            </a>
           </div>
           <h2 className="text-xl  mb-5">Contact Me</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -131,7 +141,7 @@ const Contact = () => {
             )}
           </form>
           <span className="flex justify-end rounded-md text-sm ml-auto text-customBlue mt-10">
-            mahshidasoudekhah@gmail.com
+            info@mahshidasoudekhah.com
           </span>
         </div>
       </div>

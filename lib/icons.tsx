@@ -71,33 +71,68 @@ export function closeIcon(color: string | undefined) {
     );
   }
 }
-export function hamburger() {
-  return (
-    <svg
-      width="25px"
-      height="25px"
-      viewBox="0 0 24 24"
-      fill="#ffff"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M4 18L20 18"
-        stroke="#ffff"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 12L20 12"
-        stroke="#ffff"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 6L20 6"
-        stroke="#ffff"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
+export function hamburger(hover?: string) {
+  if (hover == "greyHover") {
+    return (
+      <div className="icon-container-gray-hover">
+        <svg
+          width="25px"
+          height="25px"
+          viewBox="0 0 24 24"
+          fill="#fff"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 18L20 18"
+            // stroke="#fff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 12L20 12"
+            // stroke="#fff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 6L20 6"
+            // stroke="#ffff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+    );
+  } else {
+    return (
+      <div className="icon-container">
+        <svg
+          width="25px"
+          height="25px"
+          viewBox="0 0 24 24"
+          fill="#fff"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 18L20 18"
+            // stroke="#fff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 12L20 12"
+            // stroke="#fff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M4 6L20 6"
+            // stroke="#ffff"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+    );
+  }
 }

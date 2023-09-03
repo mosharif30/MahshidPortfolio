@@ -4,6 +4,7 @@ import { useIntersectionObserver } from "utils/useIntersectionObserver";
 import { useRef, useState } from "react";
 import list from "../lib/List";
 import { ImageData } from "Interfaces";
+import Image from "next/image";
 
 const Project = () => {
   const numElements = list.reduce((acc, item) => acc + item.subs.length, 1);
@@ -33,6 +34,7 @@ const Project = () => {
   function getReferenceById(id: number): React.RefObject<HTMLDivElement> {
     return refs[id];
   }
+
   return (
     <div className="flex flex-row-reverse h-full overflow-hidden">
       <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
@@ -52,13 +54,15 @@ const Project = () => {
                     {subcategory.title}
                   </h1>
                 </span>
-                <div className="flex flex-wrap justify-center">
+                <div className="flex flex-wrap justify-center mt-8">
                   {subcategory.imagesTitle.map((image) => (
-                    <div key={image.id} className="m-1 w-50 h-50 cursor-pointer relative">
-                      <img
-                        className="object-contain"
-                        width={150}
-                        height={70}
+                    <div
+                      key={image.id}
+                      className="m-1 w-150 h-150 cursor-pointer relative"
+                    >
+                      <Image
+                        width={210}
+                        height={210}
                         src={image.thumbnail}
                         alt={image.title}
                         onClick={() => openModal(image)}
@@ -78,7 +82,9 @@ const Project = () => {
                     className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center  bg-black bg-opacity-80"
                     ref={modalRef}
                   >
-                    <img
+                    <Image
+                      width={450}
+                      height={450}
                       className="max-w-5xl max-h-5xl"
                       src={selectedImage.fullSize}
                       alt={selectedImage.title}
@@ -91,33 +97,37 @@ const Project = () => {
         </div>
       </section>
       <section className="collapse md:visible w-0 md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
-        <div className="grid  place-items-center mt-auto h-full p-5">
-          <span className="px-5">
-            <h1 className="text-3xl text-white py-5">Project</h1>
-            {list.map((category) => (
-              <div key={category.id}>
-                <h1
-                  className={`text-xl text-white py-5 ${
-                    category.subs.some(
-                      (subcategory) => isVisible[subcategory.id]
-                    ) && "line-through"
-                  }`}
-                >
-                  {category.title}
-                </h1>
-                {category.subs.map((subcategory) => (
-                  <a key={subcategory.id} href={`#${subcategory.id}`}>
-                    <h1
-                      className={`text-xl text-white pl-5 ${
-                        isVisible[subcategory.id] && "line-through"
-                      }`}
-                    >
-                      {subcategory.title}
-                    </h1>
-                  </a>
-                ))}
-              </div>
-            ))}
+        <div className="grid  place-items-center  h-44 p-1 mt-44">
+          <h1 className="text-3xl text-white py-5">Project</h1>
+          <span className="px-5 w-96">
+            {(() => {
+              for (const category of list) {
+                const firstVisibleSubcategory = category.subs.find(
+                  (subcategory) => isVisible[subcategory.id]
+                );
+
+                if (firstVisibleSubcategory) {
+                  return (
+                    <>
+                      <h1 className={`text-xl text-white py-5`}>
+                        {category.title}
+                      </h1>
+                      <div key={category.id}>
+                        <a
+                          key={firstVisibleSubcategory.id}
+                          href={`#${firstVisibleSubcategory.id}`}
+                        >
+                          <h1 className={`text-xl text-white pl-5`}>
+                            {firstVisibleSubcategory.title}
+                          </h1>
+                        </a>
+                      </div>
+                    </>
+                  );
+                }
+              }
+              return null; // Don't render if no visible categories
+            })()}
           </span>
         </div>
       </section>
