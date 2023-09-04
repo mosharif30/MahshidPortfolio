@@ -61,6 +61,7 @@ const Project = () => {
                       className="m-1  cursor-pointer relative"
                     >
                       <Image
+                        priority={true}
                         width={210}
                         height={210}
                         src={image.thumbnail}
