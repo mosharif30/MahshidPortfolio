@@ -41,3 +41,9 @@
   fill: #0288d1;
   stroke: #0288d1;
 }
+.square-image-container {
+  position: relative;
+  width: 250px; /* Set the desired square width */
+  height: 250px; /* Set the desired square height */
+  overflow: hidden;
+}

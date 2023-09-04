@@ -60,14 +60,17 @@ const Project = () => {
                       key={image.id}
                       className="m-1  cursor-pointer relative"
                     >
-                      <Image
-                        priority={true}
-                        width={210}
-                        height={210}
-                        src={image.thumbnail}
-                        alt={image.title}
-                        onClick={() => openModal(image)}
-                      />
+                      <div className="square-image-container">
+                        <Image
+                          layout="fill"
+                          priority={true}
+                          // width={210}
+                          // height={210}
+                          src={image.thumbnail}
+                          alt={image.title}
+                          onClick={() => openModal(image)}
+                        />
+                      </div>
                       <div
                         className="absolute top-0 left-0 w-full h-full bg-customBlue bg-opacity-50 flex justify-center items-center opacity-0 transition-opacity hover:opacity-100"
                         onClick={() => openModal(image)}
