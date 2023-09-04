@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { closeIcon, hamburger } from "../lib/icons";
+import { blueHamburger, closeIcon, hamburger } from "../lib/icons";
 import { navItems } from "lib/navigationItems";
 import Link from "next/link";
 import clsx from "clsx";
@@ -60,6 +60,8 @@ export default function Navbar() {
             : closeIcon("white")
           : pathname == "/about"
           ? hamburger("greyHover")
+          : pathname == "/contact"
+          ? blueHamburger()
           : hamburger()}
       </button>
 

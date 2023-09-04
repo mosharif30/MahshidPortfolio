@@ -58,7 +58,7 @@ const Project = () => {
                   {subcategory.imagesTitle.map((image) => (
                     <div
                       key={image.id}
-                      className="m-1 w-150 h-150 cursor-pointer relative"
+                      className="m-1  cursor-pointer relative"
                     >
                       <Image
                         width={210}
