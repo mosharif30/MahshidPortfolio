@@ -38,12 +38,12 @@ function About() {
           <span className="px-5">
             <div className="my-5 text-white dark:text-neutral-200 pt-2 pl-2">
               <div className="">
-                <span
+                {/* <span
                   onClick={handleDownload}
                   className="md:hidden inline-block rounded-md text-3xl text-white cursor-pointer hover:text-gray-200 "
                 >
                   Download CV
-                </span>
+                </span> */}
               </div>
               <h1 className="text-3xl text-white mb-5">about me</h1>
               <p>{about()}</p>
