@@ -61,11 +61,12 @@ const Project = () => {
                       className="m-1  cursor-pointer relative"
                     >
                       <div className="square-image-container">
-                        <Image
-                          layout="fill"
-                          priority={true}
-                          // width={210}
-                          // height={210}
+                        <img
+                          // layout="fill"
+                          // priority={true}
+                          className="mainImage"
+                          width={250}
+                          height={250}
                           src={image.thumbnail}
                           alt={image.title}
                           onClick={() => openModal(image)}

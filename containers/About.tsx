@@ -25,12 +25,12 @@ function About() {
               </h1>
             </div>
           </section>
-          <span
+          {/* <span
             onClick={handleDownload}
             className="inline-block rounded-md text-3xl text-customBlue cursor-pointer hover:text-gray-200 mb-5 ml-5"
           >
             Download CV
-          </span>
+          </span> */}
         </div>
       </section>
       <section className="w-full md:w-1/2 overflow-y-auto bg-customBlue ml-auto justify-center h-max md:h-full">
