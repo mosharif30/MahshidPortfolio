@@ -2,12 +2,15 @@
 
 import { useIntersectionObserver } from "utils/useIntersectionObserver";
 import { useRef, useState } from "react";
-import list from "../lib/List";
+import ListGraphic from "../lib/ListGraphic";
 import { ImageData } from "Interfaces";
 import Image from "next/image";
 
-const Project = () => {
-  const numElements = list.reduce((acc, item) => acc + item.subs.length, 1);
+const GraphicProject = () => {
+  const numElements = ListGraphic.reduce(
+    (acc, item) => acc + item.subs.length,
+    1
+  );
   const refs = Array.from({ length: numElements }, () =>
     useRef<HTMLDivElement | null>(null)
   );
@@ -39,7 +42,7 @@ const Project = () => {
     <div className="flex flex-row-reverse h-full overflow-hidden">
       <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
         <div className="grid  place-items-center mt-auto p-1">
-          {list.map((category) =>
+          {ListGraphic.map((category) =>
             category.subs.map((subcategory) => (
               <div
                 key={subcategory.id}
@@ -103,10 +106,10 @@ const Project = () => {
       </section>
       <section className="collapse md:visible w-0 md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
         <div className="grid  place-items-center  h-44 p-1 mt-44">
-          <h1 className="text-3xl text-white py-5">Illustration Projects</h1>
+          <h1 className="text-3xl text-white py-5">Graphic Design Project</h1>
           <span className="px-5 w-96">
             {(() => {
-              for (const category of list) {
+              for (const category of ListGraphic) {
                 const firstVisibleSubcategory = category.subs.find(
                   (subcategory) => isVisible[subcategory.id]
                 );
@@ -140,4 +143,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default GraphicProject;

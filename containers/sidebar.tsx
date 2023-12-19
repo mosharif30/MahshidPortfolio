@@ -5,31 +5,19 @@ import { blueHamburger, closeIcon, hamburger } from "../lib/icons";
 import { navItems } from "lib/navigationItems";
 import Link from "next/link";
 import clsx from "clsx";
-
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname() || "/";
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleOutsideClick = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setIsMenuOpen(false);
-    }
-  };
-
   const handleClick = () => {
     setIsMenuOpen(false);
+    setIsModalOpen(false);
   };
 
   const linkClassName = (isActive: boolean) => {
@@ -37,7 +25,7 @@ export default function Navbar() {
       `${
         pathname == "/about"
           ? "text-customBlue text-3xl"
-          : pathname == "/project"
+          : pathname.startsWith("/project")
           ? "text-customBlue hover:text-white text-3xl"
           : "text-white text-3xl "
       }   hover:text-customGray  flex align-middle   `,
@@ -46,6 +34,32 @@ export default function Navbar() {
       }
     );
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isModalOpen]);
 
   return (
     <div className="relative " ref={menuRef}>
@@ -71,7 +85,7 @@ export default function Navbar() {
             className={`md:flex-shrink-0 md:mx-0 md:px-0 flex flex-col-reverse ${
               pathname == "/about"
                 ? "bg-white"
-                : pathname == "/project"
+                : pathname.startsWith("/project")
                 ? "bg-customGray"
                 : "bg-customBlue"
             } w-full h-full`}
@@ -88,26 +102,60 @@ export default function Navbar() {
                         const { name } = navItems[path];
                         const isActive = path === pathname;
 
-                        return (
-                          <Link
-                            onClick={handleClick}
-                            key={path}
-                            href={path}
-                            className={linkClassName(isActive)}
-                          >
-                            <span className="relative py-[20px] px-[10px] my-auto">
-                              {name}
-                            </span>
-                          </Link>
-                        );
+                        if (path === "/project") {
+                          return (
+                            <a key={path} className={linkClassName(isActive)}>
+                              <span
+                                className="relative py-[20px] px-[10px] my-auto cursor-pointer"
+                                onClick={() => setIsModalOpen(true)}
+                              >
+                                {name}
+                              </span>
+                            </a>
+                          );
+                        } else {
+                          return (
+                            <Link
+                              onClick={handleClick}
+                              key={path}
+                              href={path}
+                              className={linkClassName(isActive)}
+                            >
+                              <span className="relative py-[20px] px-[10px] my-auto">
+                                {name}
+                              </span>
+                            </Link>
+                          );
+                        }
                       })}
                     </div>
                   </div>
                 </nav>
               </div>
-              <div className="  rounded-md text-2xl mb-6 ml-6  text-white ">
-                <span>info@mahshidasoudekhah.com</span>
-              </div>
+
+              {isModalOpen && (
+                <div className="modal-overlay" onClick={closeModal}>
+                  <div
+                    className="modal-content"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Link
+                      onClick={handleClick}
+                      href={"/project/Illustration"}
+                      className="modal-button"
+                    >
+                      Illustration
+                    </Link>
+                    <Link
+                      onClick={handleClick}
+                      href={"/project/GraphicDesign"}
+                      className="modal-button"
+                    >
+                      Graphic Design
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           </aside>
         </div>
