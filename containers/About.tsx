@@ -17,8 +17,8 @@ function About() {
     <div className="w-full flex flex-row h-max md:h-full">
       <section className="hidden md:flex md:w-1/2 bg-customGray h-max md:h-full justify-end  flex-col-reverse md:flex-col">
         <div className="">
-          <section className="flex items-center justify-center h-screen">
-            <div className="flex justify-center flex-col text-center">
+          <section className="flex items-center justify-start h-screen ml-10">
+            <div className="flex justify-center flex-col text-start">
               <h1 className="text-3xl md:text-5xl text-customBlue">{name}</h1>
               <h1 className="text-2xl md:text-2xl text-customBlue mt-4">
                 Graphic designer and Illustrator
@@ -46,7 +46,7 @@ function About() {
                 </span> */}
               </div>
               <h1 className="text-3xl text-white mb-5">about me</h1>
-              <p>{about()}</p>
+              <p className="text-justify">{about()}</p>
             </div>
           </span>
         </div>
