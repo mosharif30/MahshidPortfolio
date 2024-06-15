@@ -38,7 +38,7 @@ const Project = () => {
   return (
     <div className="flex flex-row-reverse h-full overflow-hidden">
       <section className="w-full md:w-1/2 bg-customGray ml-auto overflow-y-scroll justify-center">
-        <div className="grid  place-items-center mt-auto p-1">
+        <div className="grid place-items-center mt-auto p-1">
           {list.map((category) =>
             category.subs.map((subcategory) => (
               <div
@@ -54,16 +54,16 @@ const Project = () => {
                     {subcategory.title}
                   </h1>
                 </span>
-                <div className="flex flex-wrap justify-center mt-8">
+                <div className="flex flex-wrap justify-start mt-8 sm:ml-20 md:ml-1 lg:ml-14 xl:ml-14">
+                  {" "}
+                  {/* Center the images */}
                   {subcategory.imagesTitle.map((image) => (
                     <div
                       key={image.id}
-                      className="m-1  cursor-pointer relative image-container"
+                      className="m-1 cursor-pointer relative image-container"
                     >
                       <div className="square-image-container">
                         <img
-                          // layout="fill"
-                          // priority={true}
                           className="mainImage"
                           width={250}
                           height={250}
@@ -84,7 +84,7 @@ const Project = () => {
                 {selectedImage && (
                   <div
                     onClick={handleModalClick}
-                    className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center  bg-black bg-opacity-80"
+                    className="fixed top-0 bottom-0 right-0 left-0 flex justify-center items-center bg-black bg-opacity-80"
                     ref={modalRef}
                   >
                     <Image
@@ -102,7 +102,7 @@ const Project = () => {
         </div>
       </section>
       <section className="collapse md:visible w-0 md:w-1/2 bg-customBlue ml-auto h-full justify-center overflow-hidden">
-        <div className="grid  place-items-center  h-44 p-1 mt-44">
+        <div className="grid place-items-center h-44 p-1 mt-44">
           <h1 className="text-3xl text-white py-5">Illustration Projects</h1>
           <span className="px-5 w-96">
             {(() => {
@@ -114,7 +114,7 @@ const Project = () => {
                 if (firstVisibleSubcategory) {
                   return (
                     <>
-                      <h1 className={`text-xl text-white py-5`}>
+                      <h1 className="text-xl text-white py-5">
                         {category.title}
                       </h1>
                       <div key={category.id}>
@@ -122,7 +122,7 @@ const Project = () => {
                           key={firstVisibleSubcategory.id}
                           href={`#${firstVisibleSubcategory.id}`}
                         >
-                          <h1 className={`text-xl text-white pl-5`}>
+                          <h1 className="text-xl text-white pl-5">
                             {firstVisibleSubcategory.title}
                           </h1>
                         </a>

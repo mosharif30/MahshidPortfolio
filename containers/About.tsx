@@ -46,7 +46,7 @@ function About() {
                 </span> */}
               </div>
               <h1 className="text-3xl text-white mb-5">about me</h1>
-              <p className="text-justify">{about()}</p>
+              <p className="">{about()}</p>
             </div>
           </span>
         </div>
