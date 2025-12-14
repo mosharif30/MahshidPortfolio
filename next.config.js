@@ -6,6 +6,7 @@ const nextConfig = {
   output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
+    domains: ["mahshid.s3.ir-thr-at1.arvanstorage.ir"],
     // Twitter Profile Picture
     remotePatterns: [
       {

@@ -2,61 +2,25 @@
   {
     "id": 1,
     "title": "Image 1",
-    "thumbnail": "/images/posters/1.jpg",
-    "fullSize": "/images/posters/1.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F1.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F1.jpg?versionId="
   },
   {
     "id": 2,
     "title": "Image 2",
-    "thumbnail": "/images/posters/2.jpg",
-    "fullSize": "/images/posters/2.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F2.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F2.jpg?versionId="
   },
   {
     "id": 3,
     "title": "Image 3",
-    "thumbnail": "/images/posters/3.jpg",
-    "fullSize": "/images/posters/3.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F3.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F3.jpg?versionId="
   },
   {
     "id": 4,
     "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Image 4",
-    "thumbnail": "/images/posters/4.jpg",
-    "fullSize": "/images/posters/4.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F4.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Fposters%2F4.jpg?versionId="
   }
 ]

@@ -2,31 +2,31 @@
   {
     "id": 1,
     "title": "Image 1",
-    "thumbnail": "/images/roosta/1.jpg",
-    "fullSize": "/images/roosta/1.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F1.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F1.jpg?versionId="
   },
   {
     "id": 2,
     "title": "Image 2",
-    "thumbnail": "/images/roosta/2.jpg",
-    "fullSize": "/images/roosta/2.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F2.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F2.jpg?versionId="
   },
   {
     "id": 3,
     "title": "Image 3",
-    "thumbnail": "/images/roosta/3.jpg",
-    "fullSize": "/images/roosta/3.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F3.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F3.jpg?versionId="
   },
   {
     "id": 4,
     "title": "Image 4",
-    "thumbnail": "/images/roosta/4.jpg",
-    "fullSize": "/images/roosta/4.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F4.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F4.jpg?versionId="
   },
   {
     "id": 5,
     "title": "Image 5",
-    "thumbnail": "/images/roosta/5.jpg",
-    "fullSize": "/images/roosta/5.jpg"
+    "thumbnail": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F5.jpg?versionId=",
+    "fullSize": "https://mahshid.s3.ir-thr-at1.arvanstorage.ir/images%2Froosta%2F5.jpg?versionId="
   }
 ]
